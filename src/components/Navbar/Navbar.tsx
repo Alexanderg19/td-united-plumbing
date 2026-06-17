@@ -9,6 +9,8 @@ import styles from './Navbar.module.css'
 const PHONE_DISPLAY = '(954) 555-0199'
 const PHONE_TEL = '+19545550199'
 
+type NavTab = 'home' | 'services' | 'serviceArea' | 'contact'
+
 interface Props { lang: string; dict: NavDict }
 
 export default function Navbar({ lang, dict }: Props) {
@@ -16,8 +18,9 @@ export default function Navbar({ lang, dict }: Props) {
   const router = useRouter()
   const [isScrolled, setIsScrolled] = useState(false)
   const [drawerOpen, setDrawerOpen] = useState(false)
-
-  const isContactPage = pathname.split('/')[2] === 'contact'
+  const [activeTab, setActiveTab] = useState<NavTab>(
+    () => pathname.split('/')[2] === 'contact' ? 'contact' : 'home'
+  )
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 8)
@@ -26,7 +29,11 @@ export default function Navbar({ lang, dict }: Props) {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  useEffect(() => { setDrawerOpen(false) }, [pathname])
+  useEffect(() => {
+    setDrawerOpen(false)
+    // Sync activeTab on pathname changes (back/forward navigation between pages)
+    setActiveTab(pathname.split('/')[2] === 'contact' ? 'contact' : 'home')
+  }, [pathname])
 
   useEffect(() => {
     document.body.style.overflow = drawerOpen ? 'hidden' : ''
@@ -34,7 +41,6 @@ export default function Navbar({ lang, dict }: Props) {
   }, [drawerOpen])
 
   const switchLang = (targetLang: string) => {
-    // Replace the locale segment: /en/contact → /es/contact
     const segments = pathname.split('/')
     segments[1] = targetLang
     router.push(segments.join('/') || `/${targetLang}`)
@@ -55,10 +61,26 @@ export default function Navbar({ lang, dict }: Props) {
           </Link>
 
           <nav className={styles.links} aria-label="Primary">
-            <Link href={`/${lang}`} aria-current={!isContactPage ? 'page' : undefined}>{dict.home}</Link>
-            <Link href={`/${lang}#services`}>{dict.services}</Link>
-            <Link href={`/${lang}#service-area`}>{dict.serviceArea}</Link>
-            <Link href={`/${lang}/contact`} aria-current={isContactPage ? 'page' : undefined}>{dict.contact}</Link>
+            <Link
+              href={`/${lang}`}
+              aria-current={activeTab === 'home' ? 'page' : undefined}
+              onClick={() => setActiveTab('home')}
+            >{dict.home}</Link>
+            <Link
+              href={`/${lang}#services`}
+              aria-current={activeTab === 'services' ? 'page' : undefined}
+              onClick={() => setActiveTab('services')}
+            >{dict.services}</Link>
+            <Link
+              href={`/${lang}#service-area`}
+              aria-current={activeTab === 'serviceArea' ? 'page' : undefined}
+              onClick={() => setActiveTab('serviceArea')}
+            >{dict.serviceArea}</Link>
+            <Link
+              href={`/${lang}/contact`}
+              aria-current={activeTab === 'contact' ? 'page' : undefined}
+              onClick={() => setActiveTab('contact')}
+            >{dict.contact}</Link>
           </nav>
 
           <div className={styles.right}>
@@ -126,10 +148,30 @@ export default function Navbar({ lang, dict }: Props) {
             ×
           </button>
         </div>
-        <Link className={styles.drawerLink} href={`/${lang}`} onClick={() => setDrawerOpen(false)}>{dict.home}</Link>
-        <Link className={styles.drawerLink} href={`/${lang}#services`} onClick={() => setDrawerOpen(false)}>{dict.services}</Link>
-        <Link className={styles.drawerLink} href={`/${lang}#service-area`} onClick={() => setDrawerOpen(false)}>{dict.serviceArea}</Link>
-        <Link className={styles.drawerLink} href={`/${lang}/contact`} onClick={() => setDrawerOpen(false)}>{dict.contact}</Link>
+        <Link
+          className={`${styles.drawerLink}${activeTab === 'home' ? ` ${styles.drawerLinkActive}` : ''}`}
+          href={`/${lang}`}
+          aria-current={activeTab === 'home' ? 'page' : undefined}
+          onClick={() => setActiveTab('home')}
+        >{dict.home}</Link>
+        <Link
+          className={`${styles.drawerLink}${activeTab === 'services' ? ` ${styles.drawerLinkActive}` : ''}`}
+          href={`/${lang}#services`}
+          aria-current={activeTab === 'services' ? 'page' : undefined}
+          onClick={() => setActiveTab('services')}
+        >{dict.services}</Link>
+        <Link
+          className={`${styles.drawerLink}${activeTab === 'serviceArea' ? ` ${styles.drawerLinkActive}` : ''}`}
+          href={`/${lang}#service-area`}
+          aria-current={activeTab === 'serviceArea' ? 'page' : undefined}
+          onClick={() => setActiveTab('serviceArea')}
+        >{dict.serviceArea}</Link>
+        <Link
+          className={`${styles.drawerLink}${activeTab === 'contact' ? ` ${styles.drawerLinkActive}` : ''}`}
+          href={`/${lang}/contact`}
+          aria-current={activeTab === 'contact' ? 'page' : undefined}
+          onClick={() => setActiveTab('contact')}
+        >{dict.contact}</Link>
         <a className={styles.drawerCall} href={`tel:${PHONE_TEL}`} onClick={() => setDrawerOpen(false)}>
           <span className="mono">● {dict.call}</span>
           <strong>{PHONE_DISPLAY}</strong>

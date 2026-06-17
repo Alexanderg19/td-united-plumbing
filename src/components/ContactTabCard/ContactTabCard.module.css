@@ -50,17 +50,33 @@
 }
 
 /* Success state */
-.tabcard.isSuccess .tabs,
-.tabcard.isSuccess .panel { display: none; }
-.tabcard.isSuccess .success { display: flex; }
-
 .success {
-  display: none;
+  position: relative;
   padding: 56px 32px;
   text-align: center;
+  display: flex;
   flex-direction: column;
   align-items: center;
   gap: 16px;
+}
+
+.successClose {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  line-height: 1;
+  color: var(--gray);
+  cursor: pointer;
+  padding: 4px 6px;
+  opacity: 0.6;
+  transition: opacity .15s;
+}
+
+.successClose:hover {
+  opacity: 1;
 }
 .check {
   width: 66px; height: 66px; border-radius: 50%;
@@ -84,6 +100,22 @@
   font-family: var(--font-mono);
   font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
   color: var(--gray); margin-top: 6px;
+}
+
+.submitDisabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+.recapErr {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.04em;
+  color: var(--red);
+  display: block;
+  margin-top: 6px;
 }
 
 @media (max-width: 680px) {

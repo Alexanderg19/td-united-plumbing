@@ -161,6 +161,7 @@
   color: #fff;
 }
 .drawerLink:hover { color: color-mix(in oklab, var(--blue), white 50%); }
+.drawerLinkActive { color: color-mix(in oklab, var(--blue), white 50%); }
 .drawerCall {
   margin-top: auto;
   display: flex; flex-direction: column; gap: 4px;
