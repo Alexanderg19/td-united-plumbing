@@ -1,0 +1,70 @@
+.infoside { display: flex; flex-direction: column; gap: 16px; }
+
+.infocard {
+  border-radius: var(--radius-lg);
+  padding: 28px;
+}
+
+/* Accent card (blue bg) */
+.accent {
+  background: var(--blue);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.accent::before {
+  content: "24/7";
+  position: absolute; right: -10px; top: -22px;
+  font-family: var(--font-display); font-weight: 900; font-stretch: 125%;
+  font-size: 110px; line-height: 1; color: rgba(255,255,255,0.08);
+  pointer-events: none;
+}
+.label {
+  font-family: var(--font-mono);
+  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  margin: 0 0 12px; color: rgba(255,255,255,0.7);
+  position: relative; z-index: 1;
+}
+.num {
+  display: block; position: relative; z-index: 1;
+  font-family: var(--font-display);
+  font-weight: 800; font-stretch: 114%;
+  font-size: 34px; letter-spacing: -0.02em; line-height: 1;
+}
+.num:hover { color: #fff; }
+.accentActions {
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column; gap: 10px; margin-top: 22px;
+}
+.accentActions :global(.btn) { justify-content: center; }
+.btn_call { background: #fff; color: var(--blue); }
+.btn_call:hover { background: var(--ink); color: #fff; }
+
+/* Plain card */
+.plain {
+  background: var(--paper);
+  border: 1px solid var(--line);
+}
+.plain h4 {
+  font-family: var(--font-mono);
+  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--gray); margin: 0 0 4px;
+}
+
+/* Info rows */
+.row {
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: 16px; padding: 15px 0; border-top: 1px solid var(--line);
+}
+.row:first-of-type { border-top: 0; }
+.row dt {
+  font-family: var(--font-mono);
+  font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--gray);
+}
+.row dd {
+  margin: 0; text-align: right;
+  font-family: var(--font-display); font-weight: 700; font-stretch: 105%;
+  font-size: 15px; color: var(--ink);
+  white-space: nowrap;
+}

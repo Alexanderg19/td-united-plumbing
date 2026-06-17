@@ -1,0 +1,205 @@
+{
+  "topBar": {
+    "dispatch": "Despacho de Emergencias 24/7",
+    "location": "Fort Lauderdale, FL — Atendemos Miami-Dade y Broward"
+  },
+  "nav": {
+    "home": "Inicio",
+    "services": "Servicios",
+    "serviceArea": "Área de Cobertura",
+    "contact": "Contáctenos",
+    "call": "Llamar 24/7",
+    "langLabel": "Idioma"
+  },
+  "hero": {
+    "eyebrow": "01 — Plomería de Emergencia · Sur de Florida",
+    "title": "Plomería de Emergencia 24/7",
+    "titleEm": "En la que Puedes Confiar",
+    "sub": "Profesionales certificados disponibles las 24 horas. Tuberías reventadas, alcantarillados obstruidos, inundaciones — respondemos de día o de noche y vamos en camino.",
+    "btnEmergency": "Emergencia",
+    "btnSchedule": "Programar Visita",
+    "meta": [
+      { "label": "Disponibilidad", "value": "24 / 7 / 365" },
+      { "label": "Experiencia", "value": "10+ Años" },
+      { "label": "Cobertura", "value": "Miami-Dade y Broward" }
+    ]
+  },
+  "trust": {
+    "items": [
+      { "num": "24/7", "label": "Disponibilidad", "sub": "Respondemos de día, noche, fines de semana y días festivos." },
+      { "num": "100%", "label": "Profesionales Certificados", "sub": "Técnicos con licencia, asegurados y verificados." },
+      { "num": "10+", "label": "Años de Experiencia", "sub": "Una década sirviendo hogares y negocios del Sur de Florida." },
+      { "num": "#1", "label": "De Confianza en el Sur de FL", "sub": "Los plomeros que nos recomiendan nuestros vecinos." }
+    ]
+  },
+  "services": {
+    "eyebrow": "04 — Lo Que Hacemos",
+    "title": "Plomería Integral y Mantenimiento de Instalaciones",
+    "lead": "Desde un simple goteo hasta la administración de plomería en toda una instalación — un equipo certificado, ocho servicios principales.",
+    "learnMore": "Saber Más →",
+    "items": [
+      { "num": "01", "title": "Servicios para Tanques Sépticos", "desc": "Vaciado, inspección, reparación y mantenimiento para sistemas sépticos residenciales y comerciales.", "img": "Septic system" },
+      { "num": "02", "title": "Inspección con Cámara de Alcantarillado", "desc": "Diagnóstico de tuberías en alta definición que localiza obstrucciones y daños sin excavar.", "img": "Camera feed" },
+      { "num": "03", "title": "Plomería Residencial", "desc": "Reparaciones, re-tuberías, accesorios e instalaciones para cada habitación de su hogar.", "img": "Home plumbing" },
+      { "num": "04", "title": "Plomería Comercial", "desc": "Plomería confiable para restaurantes, oficinas, locales comerciales y propiedades multifamiliares.", "img": "Commercial site" },
+      { "num": "05", "title": "Servicios de Reparación de Drenajes", "desc": "Limpieza, descalcificación y reparación de desagües para restablecer el flujo completo, rápido.", "img": "Drain repair" },
+      { "num": "06", "title": "Gestión de Construcción", "desc": "Planificación y supervisión del alcance de plomería para construcciones nuevas y renovaciones.", "img": "Construction" },
+      { "num": "07", "title": "Detección de Fugas", "desc": "Detección acústica y térmica no invasiva para encontrar fugas ocultas antes de que se propaguen.", "img": "Leak detection" },
+      { "num": "08", "title": "Mantenimiento de Instalaciones", "desc": "Programas preventivos de plomería que mantienen las instalaciones en funcionamiento.", "img": "Facility crew" }
+    ]
+  },
+  "serviceArea": {
+    "eyebrow": "05 — Dónde Trabajamos",
+    "title1": "En Camino",
+    "title2": "Por Todo el Sur de Florida",
+    "lead": "Atendemos Miami-Dade y el Condado de Broward — donde sea que estés, vamos en camino.",
+    "counties": "Condado Miami-Dade · Condado Broward",
+    "mapAlt": "Mapa de cobertura — Miami-Dade y Broward",
+    "cities": ["Golden Glades", "North Miami", "Miami Lakes", "Hialeah", "Doral", "Sweetwater", "Miami", "Miami Beach", "Fontainebleau", "Westchester"]
+  },
+  "cta": {
+    "eyebrow": "06 — Estamos Disponibles",
+    "title": "¿Emergencia de plomería? Respondemos las 24 horas del día, 7 días a la semana.",
+    "btnCall": "Llame Ahora",
+    "btnWhatsapp": "WhatsApp",
+    "tapToDial": "Toque para marcar"
+  },
+  "footer": {
+    "tag": "Plomería de emergencia certificada y servicios para instalaciones 24/7. Los plomeros de confianza del Sur de Florida por más de 10 años.",
+    "navigate": "Navegación",
+    "home": "Inicio",
+    "services": "Servicios",
+    "serviceArea": "Área de Cobertura",
+    "contact": "Contáctenos",
+    "contactTitle": "Contacto",
+    "call": "Llamar 24/7",
+    "whatsapp": "WhatsApp →",
+    "location": "Fort Lauderdale, FL",
+    "serviceAreaTitle": "Área de Servicio",
+    "copyright": "© 2026 TD United Plumbing. Todos los derechos reservados.",
+    "legal": "Miami-Dade y Broward · Licenciados y Asegurados",
+    "cities": ["Golden Glades", "North Miami", "Miami Lakes", "Hialeah", "Doral", "Sweetwater", "Miami", "Miami Beach", "Fontainebleau", "Westchester"]
+  },
+  "form": {
+    "title": "Solicitud de Emergencia",
+    "labelName": "Nombre",
+    "labelPhone": "Teléfono",
+    "labelType": "Tipo de Emergencia",
+    "labelAddress": "Dirección",
+    "placeholderName": "Su nombre",
+    "placeholderPhone": "(954) 000-0000",
+    "placeholderType": "Seleccione una emergencia…",
+    "placeholderAddress": "123 Calle Principal, Apt 4B, Miami, FL 33101",
+    "options": [
+      "Tubería reventada / con fuga",
+      "Retroceso de alcantarillado",
+      "Desagüe obstruido / desbordado",
+      "Sin agua caliente",
+      "Inundación",
+      "Emergencia séptica",
+      "Otro"
+    ],
+    "errName": "Por favor ingrese su nombre",
+    "errPhone": "Ingrese un número de teléfono válido",
+    "errType": "Por favor seleccione un tipo",
+    "errAddress": "Por favor ingrese la dirección de la propiedad",
+    "errRecaptcha": "Por favor confirme que no es un robot",
+    "btnSend": "Enviar Solicitud",
+    "btnSending": "Enviando…",
+    "btnCall": "O llame ahora",
+    "successTitle": "Solicitud enviada con éxito",
+    "successMsg": "Nos pondremos en contacto con usted en breve. Si prefiere hablar con nosotros ahora mismo, llámenos directamente:"
+  },
+  "floatingWa": {
+    "ariaLabel": "Chatea con nosotros en WhatsApp",
+    "label": "WhatsApp",
+    "sub": "Toca para chatear"
+  },
+  "pageHero": {
+    "eyebrow": "Contacto · Cita · Cotización",
+    "title": "Vamos a",
+    "titleEm": "arreglarlo.",
+    "sub": "Reserve una visita cuando le convenga, o cuéntenos sobre el trabajo y le enviaremos un presupuesto gratuito. Para emergencias activas, llámenos — respondemos las 24 horas.",
+    "callLabel": "¿Emergencia? Llame ahora"
+  },
+  "contactCard": {
+    "tabs": {
+      "schedule": { "key": "01 — Reservar", "label": "Programar Visita" },
+      "quote": { "key": "02 — Preguntar", "label": "Solicitar Cotización" }
+    },
+    "serviceOptions": [
+      "Servicios para Tanques Sépticos",
+      "Inspección con Cámara de Alcantarillado",
+      "Plomería Residencial",
+      "Plomería Comercial",
+      "Servicios de Reparación de Drenajes",
+      "Gestión de Construcción",
+      "Detección de Fugas",
+      "Mantenimiento de Instalaciones",
+      "No estoy seguro / otro"
+    ],
+    "schedule": {
+      "intro": "Elija una fecha y hora de preferencia y confirmaremos su ventana de cita. Sin pago para reservar.",
+      "labelName": "Nombre",
+      "labelPhone": "Teléfono",
+      "labelEmail": "Correo electrónico",
+      "labelService": "Tipo de Servicio",
+      "labelDate": "Fecha Preferida",
+      "labelTime": "Hora Preferida",
+      "labelMsg": "Mensaje",
+      "optional": "(opcional)",
+      "placeholderName": "Su nombre",
+      "placeholderPhone": "(954) 000-0000",
+      "placeholderEmail": "usted@email.com",
+      "placeholderService": "Seleccione un servicio…",
+      "placeholderMsg": "¿Algo que debamos saber antes de llegar?",
+      "errName": "Por favor ingrese su nombre",
+      "errPhone": "Ingrese un número de teléfono válido",
+      "errEmail": "Ingrese un correo electrónico válido",
+      "errService": "Por favor seleccione un servicio",
+      "errDate": "Por favor seleccione una fecha",
+      "errTime": "Por favor seleccione una hora",
+      "btn": "Programar Mi Visita",
+      "preferToTalk": "¿Prefiere hablar?",
+      "successTitle": "Solicitud de visita enviada",
+      "successMsg": "Hemos recibido su solicitud y confirmaremos su ventana de cita en breve. ¿Prefiere hablar ahora? Llámenos directamente:"
+    },
+    "quote": {
+      "intro": "Cuéntenos sobre el trabajo y nos pondremos en contacto con información y un presupuesto gratuito sin compromiso.",
+      "labelName": "Nombre",
+      "labelPhone": "Teléfono",
+      "labelEmail": "Correo electrónico",
+      "labelService": "Tipo de Servicio",
+      "labelMsg": "Mensaje",
+      "optional": "(opcional)",
+      "placeholderName": "Su nombre",
+      "placeholderPhone": "(954) 000-0000",
+      "placeholderEmail": "usted@email.com",
+      "placeholderService": "Seleccione un servicio…",
+      "placeholderMsg": "Describa el problema, alcance o para qué desea una cotización…",
+      "errName": "Por favor ingrese su nombre",
+      "errPhone": "Ingrese un número de teléfono válido",
+      "errEmail": "Ingrese un correo electrónico válido",
+      "errMsg": "Por favor cuéntenos un poco sobre el trabajo",
+      "btn": "Solicitar Mi Cotización",
+      "orMessage": "O escríbanos por",
+      "successTitle": "Solicitud de cotización enviada",
+      "successMsg": "Gracias — revisaremos los detalles y le responderemos con información y un presupuesto gratuito. ¿Lo necesita antes? Llámenos directamente:"
+    },
+    "avgResponse": "Resp. promedio < 60 min · 24/7"
+  },
+  "infoSidebar": {
+    "callLabel": "Llámenos — 24/7",
+    "callNow": "Llamar Ahora",
+    "whatsapp": "WhatsApp",
+    "glanceTitle": "De un vistazo",
+    "glance": [
+      { "dt": "Línea de emergencia", "dd": "24 / 7 / 365" },
+      { "dt": "Resp. promedio", "dd": "Menos de 60 min" },
+      { "dt": "Oficina", "dd": "Fort Lauderdale, FL" },
+      { "dt": "Licenciados y asegurados", "dd": "Sí" }
+    ],
+    "serviceAreaTitle": "Área de Servicio",
+    "cities": ["Golden Glades", "North Miami", "Miami Lakes", "Hialeah", "Doral", "Sweetwater", "Miami", "Miami Beach", "Fontainebleau", "Westchester"]
+  }
+}

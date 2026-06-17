@@ -1,0 +1,62 @@
+.area {
+  background: var(--ink);
+  color: #fff;
+}
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 64px;
+  align-items: center;
+}
+.title {
+  font-family: var(--font-display);
+  font-weight: 800; font-stretch: 115%;
+  font-size: clamp(32px, 4vw, 54px);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  margin: 20px 0 0;
+}
+.lead { color: rgba(255,255,255,0.66); margin: 22px 0 0; font-size: 18px; max-width: 44ch; }
+.counties {
+  margin-top: 28px;
+  font-family: var(--font-mono);
+  font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+}
+.map {
+  position: relative;
+  aspect-ratio: 5 / 4;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255,255,255,0.1);
+  overflow: hidden;
+}
+.map :global(.ph__tag) { background: rgba(10,16,22,0.6); }
+.crosshair {
+  position: absolute;
+  width: 12px; height: 12px;
+  transform: translate(-50%, -50%);
+}
+.crosshair::before,
+.crosshair::after {
+  content: ""; position: absolute; background: var(--blue);
+}
+.crosshair::before { left: 50%; top: 0; bottom: 0; width: 1.5px; transform: translateX(-50%); }
+.crosshair::after { top: 50%; left: 0; right: 0; height: 1.5px; transform: translateY(-50%); }
+.pin {
+  position: absolute;
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--blue);
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--blue) 35%, transparent);
+  animation: pulsePin 2.4s infinite;
+}
+@keyframes pulsePin {
+  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--blue) 50%, transparent); }
+  70% { box-shadow: 0 0 0 12px transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+
+@media (max-width: 1080px) {
+  .layout { grid-template-columns: 1fr; gap: 40px; }
+}

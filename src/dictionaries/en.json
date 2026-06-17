@@ -1,0 +1,205 @@
+{
+  "topBar": {
+    "dispatch": "24/7 Emergency Dispatch",
+    "location": "Fort Lauderdale, FL — Serving Miami-Dade & Broward"
+  },
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "serviceArea": "Service Area",
+    "contact": "Contact Us",
+    "call": "Call 24/7",
+    "langLabel": "Language"
+  },
+  "hero": {
+    "eyebrow": "01 — Emergency Plumbing · South Florida",
+    "title": "24/7 Emergency Plumbing",
+    "titleEm": "You Can Trust",
+    "sub": "Certified professionals on call around the clock. Burst pipes, backed-up sewers, flooding — we answer day or night and we're on our way.",
+    "btnEmergency": "Emergency",
+    "btnSchedule": "Schedule a Visit",
+    "meta": [
+      { "label": "Availability", "value": "24 / 7 / 365" },
+      { "label": "Experience", "value": "10+ Years" },
+      { "label": "Coverage", "value": "Miami-Dade & Broward" }
+    ]
+  },
+  "trust": {
+    "items": [
+      { "num": "24/7", "label": "Availability", "sub": "We answer day, night, weekends & holidays." },
+      { "num": "100%", "label": "Certified Professionals", "sub": "Licensed, insured & background-checked techs." },
+      { "num": "10+", "label": "Years of Experience", "sub": "A decade serving South Florida homes & businesses." },
+      { "num": "#1", "label": "Trusted in South FL", "sub": "The plumbers our neighbors recommend." }
+    ]
+  },
+  "services": {
+    "eyebrow": "04 — What We Do",
+    "title": "Full-Service Plumbing & Facility Care",
+    "lead": "From a single dripping faucet to managing plumbing across an entire facility — one certified team, eight core services.",
+    "learnMore": "Learn More →",
+    "items": [
+      { "num": "01", "title": "Septic Tank Services", "desc": "Pumping, inspection, repair & maintenance for residential and commercial septic systems.", "img": "Septic system" },
+      { "num": "02", "title": "Sewer Camera Inspection", "desc": "High-definition pipe diagnostics that pinpoint blockages and damage without digging.", "img": "Camera feed" },
+      { "num": "03", "title": "Residential Plumbing", "desc": "Repairs, repipes, fixtures and installs for every room in your home.", "img": "Home plumbing" },
+      { "num": "04", "title": "Commercial Plumbing", "desc": "Reliable plumbing for restaurants, offices, retail and multi-unit properties.", "img": "Commercial site" },
+      { "num": "05", "title": "Drain Repair Services", "desc": "Clearing, descaling and repairing drains to restore full flow, fast.", "img": "Drain repair" },
+      { "num": "06", "title": "Construction Management", "desc": "Plumbing scope planning and oversight for new builds and renovations.", "img": "Construction" },
+      { "num": "07", "title": "Leak Detection Services", "desc": "Non-invasive acoustic & thermal detection to find hidden leaks before they spread.", "img": "Leak detection" },
+      { "num": "08", "title": "Facility Maintenance", "desc": "Scheduled, preventative plumbing programs that keep facilities running.", "img": "Facility crew" }
+    ]
+  },
+  "serviceArea": {
+    "eyebrow": "05 — Where We Work",
+    "title1": "On Our Way",
+    "title2": "Across South Florida",
+    "lead": "Serving Miami-Dade and Broward County — wherever you are, we're on our way.",
+    "counties": "Miami-Dade County · Broward County",
+    "mapAlt": "Coverage map — Miami-Dade & Broward",
+    "cities": ["Golden Glades", "North Miami", "Miami Lakes", "Hialeah", "Doral", "Sweetwater", "Miami", "Miami Beach", "Fontainebleau", "Westchester"]
+  },
+  "cta": {
+    "eyebrow": "06 — We're Standing By",
+    "title": "Plumbing emergency? We answer 24 hours a day, 7 days a week.",
+    "btnCall": "Call Now",
+    "btnWhatsapp": "WhatsApp Us",
+    "tapToDial": "Tap to dial"
+  },
+  "footer": {
+    "tag": "Certified 24/7 emergency plumbing & facility services. South Florida's trusted plumbers for 10+ years.",
+    "navigate": "Navigate",
+    "home": "Home",
+    "services": "Services",
+    "serviceArea": "Service Area",
+    "contact": "Contact Us",
+    "contactTitle": "Contact",
+    "call": "Call 24/7",
+    "whatsapp": "WhatsApp us →",
+    "location": "Fort Lauderdale, FL",
+    "serviceAreaTitle": "Service Area",
+    "copyright": "© 2026 TD United Plumbing. All rights reserved.",
+    "legal": "Miami-Dade & Broward · Licensed & Insured",
+    "cities": ["Golden Glades", "North Miami", "Miami Lakes", "Hialeah", "Doral", "Sweetwater", "Miami", "Miami Beach", "Fontainebleau", "Westchester"]
+  },
+  "form": {
+    "title": "Emergency Request",
+    "labelName": "Name",
+    "labelPhone": "Phone",
+    "labelType": "Emergency Type",
+    "labelAddress": "Address",
+    "placeholderName": "Your name",
+    "placeholderPhone": "(954) 000-0000",
+    "placeholderType": "Select an emergency…",
+    "placeholderAddress": "123 Main St, Apt 4B, Miami, FL 33101",
+    "options": [
+      "Burst / leaking pipe",
+      "Sewer backup",
+      "Clogged / overflowing drain",
+      "No hot water",
+      "Flooding",
+      "Septic emergency",
+      "Other"
+    ],
+    "errName": "Please enter your name",
+    "errPhone": "Enter a valid phone number",
+    "errType": "Please choose a type",
+    "errAddress": "Please enter the property address",
+    "errRecaptcha": "Please confirm you're not a robot",
+    "btnSend": "Send Request",
+    "btnSending": "Sending…",
+    "btnCall": "Or call now",
+    "successTitle": "Request sent successfully",
+    "successMsg": "We'll be in touch with you shortly. If you'd rather speak with us right now, call us directly:"
+  },
+  "floatingWa": {
+    "ariaLabel": "Chat with us on WhatsApp",
+    "label": "WhatsApp",
+    "sub": "Tap to chat"
+  },
+  "pageHero": {
+    "eyebrow": "Contact · Schedule · Quote",
+    "title": "Let's get it",
+    "titleEm": "fixed.",
+    "sub": "Book a visit at a time that works for you, or tell us about the job and we'll send a free quote. For active emergencies, call us — we answer around the clock.",
+    "callLabel": "Emergency? Call now"
+  },
+  "contactCard": {
+    "tabs": {
+      "schedule": { "key": "01 — Book it", "label": "Schedule a Visit" },
+      "quote": { "key": "02 — Ask us", "label": "Request a Quote" }
+    },
+    "serviceOptions": [
+      "Septic Tank Services",
+      "Sewer Camera Inspection",
+      "Residential Plumbing",
+      "Commercial Plumbing",
+      "Drain Repair Services",
+      "Construction Management",
+      "Leak Detection Services",
+      "Facility Maintenance",
+      "Not sure / other"
+    ],
+    "schedule": {
+      "intro": "Pick a preferred date and time and we'll confirm your appointment window. No payment due to book.",
+      "labelName": "Name",
+      "labelPhone": "Phone",
+      "labelEmail": "Email",
+      "labelService": "Service Type",
+      "labelDate": "Preferred Date",
+      "labelTime": "Preferred Time",
+      "labelMsg": "Message",
+      "optional": "(optional)",
+      "placeholderName": "Your name",
+      "placeholderPhone": "(954) 000-0000",
+      "placeholderEmail": "you@email.com",
+      "placeholderService": "Select a service…",
+      "placeholderMsg": "Anything we should know before we arrive?",
+      "errName": "Please enter your name",
+      "errPhone": "Enter a valid phone number",
+      "errEmail": "Enter a valid email",
+      "errService": "Please choose a service",
+      "errDate": "Please choose a date",
+      "errTime": "Please choose a time",
+      "btn": "Schedule My Visit",
+      "preferToTalk": "Prefer to talk?",
+      "successTitle": "Visit request sent",
+      "successMsg": "We've received your request and will confirm your appointment window shortly. Prefer to talk now? Call us directly:"
+    },
+    "quote": {
+      "intro": "Tell us about the job and we'll get back to you with information and a free, no-obligation quote.",
+      "labelName": "Name",
+      "labelPhone": "Phone",
+      "labelEmail": "Email",
+      "labelService": "Service Type",
+      "labelMsg": "Message",
+      "optional": "(optional)",
+      "placeholderName": "Your name",
+      "placeholderPhone": "(954) 000-0000",
+      "placeholderEmail": "you@email.com",
+      "placeholderService": "Select a service…",
+      "placeholderMsg": "Describe the issue, scope, or what you'd like a quote for…",
+      "errName": "Please enter your name",
+      "errPhone": "Enter a valid phone number",
+      "errEmail": "Enter a valid email",
+      "errMsg": "Please tell us a bit about the job",
+      "btn": "Request My Quote",
+      "orMessage": "Or message us on",
+      "successTitle": "Quote request sent",
+      "successMsg": "Thanks — we'll review the details and get back to you with information and a free quote. Need it sooner? Call us directly:"
+    },
+    "avgResponse": "Avg. response < 60 min · 24/7"
+  },
+  "infoSidebar": {
+    "callLabel": "Call us — 24/7",
+    "callNow": "Call Now",
+    "whatsapp": "WhatsApp Us",
+    "glanceTitle": "At a glance",
+    "glance": [
+      { "dt": "Emergency line", "dd": "24 / 7 / 365" },
+      { "dt": "Avg. response", "dd": "Under 60 min" },
+      { "dt": "Office", "dd": "Fort Lauderdale, FL" },
+      { "dt": "Licensed & insured", "dd": "Yes" }
+    ],
+    "serviceAreaTitle": "Service Area",
+    "cities": ["Golden Glades", "North Miami", "Miami Lakes", "Hialeah", "Doral", "Sweetwater", "Miami", "Miami Beach", "Fontainebleau", "Westchester"]
+  }
+}

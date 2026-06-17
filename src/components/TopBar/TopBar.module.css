@@ -1,0 +1,59 @@
+.topbar {
+  background: var(--ink);
+  color: #fff;
+  font-size: 13px;
+}
+.inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 38px;
+  white-space: nowrap;
+}
+.meta {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: rgba(255,255,255,0.62);
+}
+.call {
+  margin-left: auto;
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.call:hover { color: color-mix(in oklab, var(--blue), white 55%); }
+.mono {
+  font-family: var(--font-mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 11.5px;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+}
+.pulse {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--red);
+  box-shadow: 0 0 0 0 color-mix(in srgb, var(--red) 70%, transparent);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--red) 65%, transparent); }
+  70% { box-shadow: 0 0 0 9px transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+.sep { color: rgba(255,255,255,0.25); }
+
+@media (max-width: 860px) {
+  .meta { display: none; }
+}
+@media (max-width: 680px) {
+  .call { font-size: 11px; }
+}

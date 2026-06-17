@@ -1,0 +1,53 @@
+.page_hero {
+  position: relative;
+  background: var(--ink);
+  color: #fff;
+  overflow: hidden;
+  scroll-margin-top: var(--nav-h);
+}
+.grid {
+  position: absolute; inset: 0; z-index: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: linear-gradient(180deg, #000, transparent);
+}
+.page_hero::after {
+  content: ""; position: absolute; inset: 0; z-index: 0;
+  background: radial-gradient(110% 90% at 88% -10%, color-mix(in srgb, var(--blue) 40%, transparent), transparent 58%);
+  pointer-events: none;
+}
+.inner {
+  position: relative; z-index: 2;
+  padding: 72px 0 84px;
+}
+.title {
+  font-family: var(--font-display);
+  font-weight: 900; font-stretch: 118%;
+  font-size: clamp(40px, 6vw, 84px);
+  line-height: 0.92;
+  letter-spacing: -0.022em;
+  text-transform: uppercase;
+  margin: 20px 0 0;
+  max-width: 18ch;
+  text-wrap: balance;
+}
+.title em { font-style: normal; color: color-mix(in oklab, var(--blue), white 42%); }
+.sub {
+  font-size: 20px; color: rgba(255,255,255,0.74);
+  max-width: 54ch; margin: 22px 0 0; text-wrap: pretty;
+}
+.call {
+  display: inline-flex; align-items: baseline; gap: 14px;
+  margin-top: 26px; flex-wrap: wrap;
+}
+.call .mono {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--red); white-space: nowrap;
+}
+.call strong {
+  font-family: var(--font-display); font-weight: 800; font-stretch: 112%;
+  font-size: 28px; letter-spacing: -0.01em; white-space: nowrap;
+}
+.call:hover strong { color: color-mix(in oklab, var(--blue), white 45%); }

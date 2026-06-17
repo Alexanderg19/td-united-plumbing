@@ -1,0 +1,90 @@
+.hero {
+  position: relative;
+  background: var(--ink);
+  color: #fff;
+  overflow: hidden;
+  scroll-margin-top: var(--nav-h);
+}
+.bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.bg::after {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(180deg, rgba(8,13,18,0.55) 0%, rgba(8,13,18,0.78) 55%, rgba(8,13,18,0.94) 100%),
+    radial-gradient(120% 80% at 80% 0%, color-mix(in srgb, var(--blue) 42%, transparent), transparent 60%);
+}
+.grid {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: linear-gradient(180deg, transparent, #000 30%, #000 70%, transparent);
+}
+.inner {
+  position: relative;
+  z-index: 2;
+  padding: 84px 0 96px;
+  min-height: calc(86vh - var(--nav-h));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-stretch: 118%;
+  font-size: clamp(44px, 7.2vw, 104px);
+  line-height: 0.92;
+  letter-spacing: -0.022em;
+  text-transform: uppercase;
+  margin: 22px 0 0;
+  max-width: 16ch;
+  text-wrap: balance;
+}
+.title em {
+  font-style: normal;
+  color: color-mix(in oklab, var(--blue), white 42%);
+}
+.sub {
+  font-size: 20px;
+  color: rgba(255,255,255,0.78);
+  max-width: 50ch;
+  margin: 26px 0 0;
+  text-wrap: pretty;
+}
+.meta {
+  display: flex;
+  gap: 36px;
+  margin-top: 52px;
+  flex-wrap: wrap;
+}
+.meta div { display: flex; flex-direction: column; gap: 3px; }
+.meta dt {
+  font-family: var(--font-mono);
+  font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+}
+.meta dd {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 800; font-stretch: 112%;
+  font-size: 26px;
+}
+
+.cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 38px;
+}
+
+@media (max-width: 680px) {
+  .meta { gap: 24px; }
+}
