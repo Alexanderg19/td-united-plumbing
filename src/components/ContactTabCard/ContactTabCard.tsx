@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import type { ContactCardDict } from '@/app/[lang]/dictionaries'
+import type { ContactCardDict, Locale } from '@/app/[lang]/dictionaries'
 import styles from './ContactTabCard.module.css'
 
 const PHONE_DISPLAY = '(954) 555-0199'
@@ -19,13 +19,17 @@ interface QuoteFilled { name: boolean; phone: boolean; email: boolean; message: 
 function validPhone(v: string) { return (v.match(/\d/g) || []).length >= 7 }
 function validEmail(v: string) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) }
 
-interface Props { dict: ContactCardDict }
+interface Props { dict: ContactCardDict; lang: Locale }
 
-export default function ContactTabCard({ dict }: Props) {
+export default function ContactTabCard({ dict, lang }: Props) {
   const [activeTab, setActiveTab] = useState<TabKey>('schedule')
   const [isSuccess, setIsSuccess] = useState(false)
   const [successTitle, setSuccessTitle] = useState('')
   const [successText, setSuccessText] = useState('')
+  const [isScheduleSubmitting, setIsScheduleSubmitting] = useState(false)
+  const [isQuoteSubmitting, setIsQuoteSubmitting] = useState(false)
+  const [showScheduleSubmitErr, setShowScheduleSubmitErr] = useState(false)
+  const [showQuoteSubmitErr, setShowQuoteSubmitErr] = useState(false)
   const [scheduleErrors, setScheduleErrors] = useState<ScheduleErrors>(
     { name: false, phone: false, email: false, service: false, address: false, date: false, time: false }
   )
@@ -104,6 +108,8 @@ export default function ContactTabCard({ dict }: Props) {
     setQuoteErrors({ name: false, phone: false, email: false, message: false })
     setShowScheduleRecapErr(false)
     setShowQuoteRecapErr(false)
+    setShowScheduleSubmitErr(false)
+    setShowQuoteSubmitErr(false)
   }
 
   const showSuccess = (title: string, text: string) => {
@@ -129,7 +135,7 @@ export default function ContactTabCard({ dict }: Props) {
   const isScheduleValid = Object.values(scheduleFilled).every(Boolean) && scheduleRecaptchaCompleted
   const isQuoteValid = Object.values(quoteFilled).every(Boolean) && quoteRecaptchaCompleted
 
-  const handleScheduleSubmit = (e: { preventDefault: () => void }) => {
+  const handleScheduleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault()
     const token = window.grecaptcha?.getResponse(scheduleWidgetId.current ?? undefined) ?? ''
     const errs: ScheduleErrors = {
@@ -153,10 +159,48 @@ export default function ContactTabCard({ dict }: Props) {
       else if (errs.time) sTimeRef.current?.focus()
       return
     }
+
+    setShowScheduleSubmitErr(false)
+    setIsScheduleSubmitting(true)
+    try {
+      const res = await fetch('/api/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'schedule',
+          token,
+          lang,
+          name: sNameRef.current?.value ?? '',
+          phone: sPhoneRef.current?.value ?? '',
+          email: sEmailRef.current?.value ?? '',
+          service: sServiceRef.current?.value ?? '',
+          address: sAddressRef.current?.value ?? '',
+          date: sDateRef.current?.value ?? '',
+          time: sTimeRef.current?.value ?? '',
+        }),
+      })
+      const { success, error } = await res.json()
+      if (!success) {
+        if (error === 'recaptcha') {
+          setShowScheduleRecapErr(true)
+          setScheduleRecaptchaCompleted(false)
+          window.grecaptcha?.reset(scheduleWidgetId.current ?? undefined)
+        } else {
+          setShowScheduleSubmitErr(true)
+        }
+        return
+      }
+    } catch {
+      setShowScheduleSubmitErr(true)
+      return
+    } finally {
+      setIsScheduleSubmitting(false)
+    }
+
     showSuccess(dict.schedule.successTitle, dict.schedule.successMsg)
   }
 
-  const handleQuoteSubmit = (e: { preventDefault: () => void }) => {
+  const handleQuoteSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault()
     const token = window.grecaptcha?.getResponse(quoteWidgetId.current ?? undefined) ?? ''
     const errs: QuoteErrors = {
@@ -174,6 +218,41 @@ export default function ContactTabCard({ dict }: Props) {
       else if (errs.message) qMsgRef.current?.focus()
       return
     }
+
+    setShowQuoteSubmitErr(false)
+    setIsQuoteSubmitting(true)
+    try {
+      const res = await fetch('/api/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'quote',
+          token,
+          lang,
+          name: qNameRef.current?.value ?? '',
+          phone: qPhoneRef.current?.value ?? '',
+          email: qEmailRef.current?.value ?? '',
+          message: qMsgRef.current?.value ?? '',
+        }),
+      })
+      const { success, error } = await res.json()
+      if (!success) {
+        if (error === 'recaptcha') {
+          setShowQuoteRecapErr(true)
+          setQuoteRecaptchaCompleted(false)
+          window.grecaptcha?.reset(quoteWidgetId.current ?? undefined)
+        } else {
+          setShowQuoteSubmitErr(true)
+        }
+        return
+      }
+    } catch {
+      setShowQuoteSubmitErr(true)
+      return
+    } finally {
+      setIsQuoteSubmitting(false)
+    }
+
     showSuccess(dict.quote.successTitle, dict.quote.successMsg)
   }
 
@@ -271,14 +350,17 @@ export default function ContactTabCard({ dict }: Props) {
                   {showScheduleRecapErr && (
                     <span className={styles.recapErr} role="alert">{s.errRecaptcha}</span>
                   )}
+                  {showScheduleSubmitErr && (
+                    <span className={styles.recapErr} role="alert">{s.errSubmit}</span>
+                  )}
                 </div>
               </div>
               <div className="eform__actions">
                 <button
                   type="submit"
-                  className={`btn btn--solid btn--lg${!isScheduleValid ? ` ${styles.submitDisabled}` : ''}`}
-                  disabled={!isScheduleValid}
-                >{s.btn}</button>
+                  className={`btn btn--solid btn--lg${!isScheduleValid || isScheduleSubmitting ? ` ${styles.submitDisabled}` : ''}`}
+                  disabled={!isScheduleValid || isScheduleSubmitting}
+                >{isScheduleSubmitting ? s.btnSending : s.btn}</button>
                 <span className="eform__note">
                   {s.preferToTalk}{' '}
                   <a href={`tel:${PHONE_TEL}`} style={{ color: 'var(--blue)', fontWeight: 600 }}>{PHONE_DISPLAY}</a>
@@ -328,14 +410,17 @@ export default function ContactTabCard({ dict }: Props) {
                   {showQuoteRecapErr && (
                     <span className={styles.recapErr} role="alert">{q.errRecaptcha}</span>
                   )}
+                  {showQuoteSubmitErr && (
+                    <span className={styles.recapErr} role="alert">{q.errSubmit}</span>
+                  )}
                 </div>
               </div>
               <div className="eform__actions">
                 <button
                   type="submit"
-                  className={`btn btn--solid btn--lg${!isQuoteValid ? ` ${styles.submitDisabled}` : ''}`}
-                  disabled={!isQuoteValid}
-                >{q.btn}</button>
+                  className={`btn btn--solid btn--lg${!isQuoteValid || isQuoteSubmitting ? ` ${styles.submitDisabled}` : ''}`}
+                  disabled={!isQuoteValid || isQuoteSubmitting}
+                >{isQuoteSubmitting ? q.btnSending : q.btn}</button>
                 <span className="eform__note">
                   {q.orMessage}{' '}
                   <a href={WA_URL} target="_blank" rel="noopener" style={{ color: 'var(--blue)', fontWeight: 600 }}>WhatsApp</a>

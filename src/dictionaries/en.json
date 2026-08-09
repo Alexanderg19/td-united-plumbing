@@ -104,6 +104,7 @@
     "errType": "Please choose a type",
     "errAddress": "Please enter the property address",
     "errRecaptcha": "Please confirm you're not a robot",
+    "errSubmit": "Something went wrong sending your request. Please try again or call us.",
     "btnSend": "Send Request",
     "btnSending": "Sending…",
     "btnCall": "Or call now",
@@ -163,7 +164,9 @@
       "errDate": "Please choose a date",
       "errTime": "Please choose a time",
       "errRecaptcha": "Please confirm you're not a robot",
+      "errSubmit": "Something went wrong sending your request. Please try again or call us.",
       "btn": "Schedule My Visit",
+      "btnSending": "Sending…",
       "preferToTalk": "Prefer to talk?",
       "successTitle": "Visit request sent",
       "successMsg": "We've received your request and will confirm your appointment window shortly. Prefer to talk now? Call us directly:"
@@ -186,7 +189,9 @@
       "errEmail": "Enter a valid email",
       "errMsg": "Please tell us a bit about the job",
       "errRecaptcha": "Please confirm you're not a robot",
+      "errSubmit": "Something went wrong sending your request. Please try again or call us.",
       "btn": "Request My Quote",
+      "btnSending": "Sending…",
       "orMessage": "Or message us on",
       "successTitle": "Quote request sent",
       "successMsg": "Thanks — we'll review the details and get back to you with information and a free quote. Need it sooner? Call us directly:"

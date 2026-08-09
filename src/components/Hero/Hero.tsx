@@ -3,11 +3,11 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import EmergencyForm from '@/components/EmergencyForm'
-import type { HeroDict, FormDict } from '@/app/[lang]/dictionaries'
+import type { HeroDict, FormDict, Locale } from '@/app/[lang]/dictionaries'
 import styles from './Hero.module.css'
 
 interface Props {
-  lang: string
+  lang: Locale
   dict: HeroDict
   formDict: FormDict
 }
@@ -45,7 +45,7 @@ export default function Hero({ lang, dict, formDict }: Props) {
           </Link>
         </div>
 
-        <EmergencyForm isOpen={isOpen} onClose={() => setIsOpen(false)} dict={formDict} />
+        <EmergencyForm isOpen={isOpen} onClose={() => setIsOpen(false)} dict={formDict} lang={lang} />
 
         <dl className={styles.meta}>
           {dict.meta.map((item) => (

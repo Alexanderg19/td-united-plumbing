@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import type { FormDict } from '@/app/[lang]/dictionaries'
+import type { FormDict, Locale } from '@/app/[lang]/dictionaries'
 import styles from './EmergencyForm.module.css'
 
 declare global {
@@ -26,6 +26,7 @@ interface EmergencyFormProps {
   isOpen: boolean
   onClose: () => void
   dict: FormDict
+  lang: Locale
 }
 
 interface FieldErrors { name: boolean; phone: boolean; type: boolean; address: boolean }
@@ -33,10 +34,11 @@ interface FieldFilled { name: boolean; phone: boolean; type: boolean; address: b
 
 function validPhone(v: string) { return (v.match(/\d/g) || []).length >= 7 }
 
-export default function EmergencyForm({ isOpen, onClose, dict }: EmergencyFormProps) {
+export default function EmergencyForm({ isOpen, onClose, dict, lang }: EmergencyFormProps) {
   const [isSuccess, setIsSuccess] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [showRecapErr, setShowRecapErr] = useState(false)
+  const [showSubmitErr, setShowSubmitErr] = useState(false)
   const [errors, setErrors] = useState<FieldErrors>({ name: false, phone: false, type: false, address: false })
   const [filled, setFilled] = useState<FieldFilled>({ name: false, phone: false, type: false, address: false })
   const [recaptchaCompleted, setRecaptchaCompleted] = useState(false)
@@ -108,24 +110,27 @@ export default function EmergencyForm({ isOpen, onClose, dict }: EmergencyFormPr
     }
 
     setShowRecapErr(false)
+    setShowSubmitErr(false)
     setIsSubmitting(true)
     try {
-      const res = await fetch('/api/verify-recaptcha', {
+      const res = await fetch('/api/leads', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ token }),
+        body: JSON.stringify({ type: 'emergency', token, lang, name, phone, emergencyType: type, address }),
       })
-      const { success } = await res.json()
+      const { success, error } = await res.json()
       if (!success) {
-        setShowRecapErr(true)
-        setRecaptchaCompleted(false)
-        window.grecaptcha?.reset(recaptchaWidgetId.current ?? undefined)
+        if (error === 'recaptcha') {
+          setShowRecapErr(true)
+          setRecaptchaCompleted(false)
+          window.grecaptcha?.reset(recaptchaWidgetId.current ?? undefined)
+        } else {
+          setShowSubmitErr(true)
+        }
         return
       }
     } catch {
-      setShowRecapErr(true)
-      setRecaptchaCompleted(false)
-      window.grecaptcha?.reset(recaptchaWidgetId.current ?? undefined)
+      setShowSubmitErr(true)
       return
     } finally {
       setIsSubmitting(false)
@@ -145,6 +150,7 @@ export default function EmergencyForm({ isOpen, onClose, dict }: EmergencyFormPr
     setFilled({ name: false, phone: false, type: false, address: false })
     setErrors({ name: false, phone: false, type: false, address: false })
     setShowRecapErr(false)
+    setShowSubmitErr(false)
     onClose()
   }
 
@@ -208,6 +214,9 @@ export default function EmergencyForm({ isOpen, onClose, dict }: EmergencyFormPr
               <div className="field field--full">
                 <div id="ef-recaptcha"></div>
                 <span className={styles.recapErr} role="alert">{dict.errRecaptcha}</span>
+                {showSubmitErr && (
+                  <span className={styles.recapErr} role="alert" style={{ display: 'block' }}>{dict.errSubmit}</span>
+                )}
               </div>
             </div>
 

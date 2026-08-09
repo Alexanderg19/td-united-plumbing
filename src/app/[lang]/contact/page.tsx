@@ -36,7 +36,7 @@ export default async function ContactPage({ params }: Props) {
       <section className="section contact" id="contact-form">
         <div className="wrap">
           <div className="contact__layout">
-            <ContactTabCard dict={dict.contactCard} />
+            <ContactTabCard dict={dict.contactCard} lang={lang} />
             <InfoSidebar dict={dict.infoSidebar} />
           </div>
         </div>

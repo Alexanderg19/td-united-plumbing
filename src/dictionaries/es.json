@@ -104,6 +104,7 @@
     "errType": "Por favor seleccione un tipo",
     "errAddress": "Por favor ingrese la dirección de la propiedad",
     "errRecaptcha": "Por favor confirme que no es un robot",
+    "errSubmit": "Ocurrió un error al enviar su solicitud. Intente de nuevo o llámenos.",
     "btnSend": "Enviar Solicitud",
     "btnSending": "Enviando…",
     "btnCall": "O llame ahora",
@@ -163,7 +164,9 @@
       "errDate": "Por favor seleccione una fecha",
       "errTime": "Por favor seleccione una hora",
       "errRecaptcha": "Por favor confirme que no es un robot",
+      "errSubmit": "Ocurrió un error al enviar su solicitud. Intente de nuevo o llámenos.",
       "btn": "Programar Mi Visita",
+      "btnSending": "Enviando…",
       "preferToTalk": "¿Prefiere hablar?",
       "successTitle": "Solicitud de visita enviada",
       "successMsg": "Hemos recibido su solicitud y confirmaremos su ventana de cita en breve. ¿Prefiere hablar ahora? Llámenos directamente:"
@@ -186,7 +189,9 @@
       "errEmail": "Ingrese un correo electrónico válido",
       "errMsg": "Por favor cuéntenos un poco sobre el trabajo",
       "errRecaptcha": "Por favor confirme que no es un robot",
+      "errSubmit": "Ocurrió un error al enviar su solicitud. Intente de nuevo o llámenos.",
       "btn": "Solicitar Mi Cotización",
+      "btnSending": "Enviando…",
       "orMessage": "O escríbanos por",
       "successTitle": "Solicitud de cotización enviada",
       "successMsg": "Gracias — revisaremos los detalles y le responderemos con información y un presupuesto gratuito. ¿Lo necesita antes? Llámenos directamente:"
