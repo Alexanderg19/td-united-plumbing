@@ -24,15 +24,14 @@ export async function sendInternalEmail(lead: Lead) {
 export async function sendConfirmationEmail(lead: Lead) {
   const { RESEND_FROM_EMAIL } = getLeadsEmailEnv()
   const resend = getResendClient()
-  const to = lead.type === 'emergency' ? undefined : lead.email
 
-  if (!to) {
-    return null;
+  if (!lead.email) {
+    return null
   }
 
   return resend.emails.send({
     from: RESEND_FROM_EMAIL,
-    to,
+    to: lead.email,
     subject: getConfirmationSubject(lead),
     react: CustomerConfirmation({ lead }),
   })

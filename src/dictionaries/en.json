@@ -78,16 +78,19 @@
     "serviceAreaTitle": "Service Area",
     "copyright": "© 2026 TD United Plumbing. All rights reserved.",
     "legal": "Miami-Dade & Broward · Licensed & Insured",
+    "privacy": "Privacy Policy",
     "cities": ["Golden Glades", "North Miami", "Miami Lakes", "Hialeah", "Doral", "Sweetwater", "Miami", "Miami Beach", "Fontainebleau", "Westchester"]
   },
   "form": {
     "title": "Emergency Request",
     "labelName": "Name",
     "labelPhone": "Phone",
+    "labelEmail": "Email",
+    "optional": "(optional)",
     "labelType": "Emergency Type",
     "labelAddress": "Address",
     "placeholderName": "Your name",
-    "placeholderPhone": "(954) 000-0000",
+    "placeholderEmail": "you@email.com",
     "placeholderType": "Select an emergency…",
     "placeholderAddress": "123 Main St, Apt 4B, Miami, FL 33101",
     "options": [
@@ -100,13 +103,16 @@
       "Other"
     ],
     "errName": "Please enter your name",
-    "errPhone": "Enter a valid phone number",
+    "errPhone": "Enter a valid phone number for the selected country",
+    "errEmail": "Enter a valid email",
     "errType": "Please choose a type",
     "errAddress": "Please enter the property address",
     "errRecaptcha": "Please confirm you're not a robot",
     "errSubmit": "Something went wrong sending your request. Please try again or call us.",
     "btnSend": "Send Request",
     "btnSending": "Sending…",
+    "consent": "By submitting, you agree to be contacted by phone, text or email about your request. Your carrier's message & data rates may apply; reply STOP to opt out. See our",
+    "consentLink": "Privacy Policy",
     "btnCall": "Or call now",
     "successTitle": "Request sent successfully",
     "successMsg": "We'll be in touch with you shortly. If you'd rather speak with us right now, call us directly:"
@@ -128,6 +134,8 @@
       "schedule": { "key": "01 — Book it", "label": "Schedule a Visit" },
       "quote": { "key": "02 — Ask us", "label": "Request a Quote" }
     },
+    "consent": "By submitting, you agree to be contacted by phone, text or email about your request. Your carrier's message & data rates may apply; reply STOP to opt out. See our",
+    "consentLink": "Privacy Policy",
     "serviceOptions": [
       "Septic Tank Services",
       "Sewer Camera Inspection",
@@ -150,12 +158,11 @@
       "labelMsg": "Message",
       "optional": "(optional)",
       "placeholderName": "Your name",
-      "placeholderPhone": "(954) 000-0000",
       "placeholderEmail": "you@email.com",
       "placeholderService": "Select a service…",
       "placeholderMsg": "Anything we should know before we arrive?",
       "errName": "Please enter your name",
-      "errPhone": "Enter a valid phone number",
+      "errPhone": "Enter a valid phone number for the selected country",
       "errEmail": "Enter a valid email",
       "errService": "Please choose a service",
       "labelAddress": "Service Address",
@@ -180,12 +187,11 @@
       "labelMsg": "Message",
       "optional": "(optional)",
       "placeholderName": "Your name",
-      "placeholderPhone": "(954) 000-0000",
       "placeholderEmail": "you@email.com",
       "placeholderService": "Select a service…",
       "placeholderMsg": "Describe the issue, scope, or what you'd like a quote for…",
       "errName": "Please enter your name",
-      "errPhone": "Enter a valid phone number",
+      "errPhone": "Enter a valid phone number for the selected country",
       "errEmail": "Enter a valid email",
       "errMsg": "Please tell us a bit about the job",
       "errRecaptcha": "Please confirm you're not a robot",
@@ -211,5 +217,137 @@
     ],
     "serviceAreaTitle": "Service Area",
     "cities": ["Golden Glades", "North Miami", "Miami Lakes", "Hialeah", "Doral", "Sweetwater", "Miami", "Miami Beach", "Fontainebleau", "Westchester"]
+  },
+  "privacy": {
+    "hero": {
+      "eyebrow": "Legal · Privacy",
+      "title": "Privacy",
+      "titleEm": "Policy.",
+      "sub": "How TD United Plumbing collects, uses and protects the information you share with us through this website.",
+      "callLabel": "Questions? Call us"
+    },
+    "updatedLabel": "Last updated",
+    "updated": "September 30, 2026",
+    "sections": [
+      {
+        "title": "Who we are",
+        "paragraphs": [
+          "TD United Plumbing (\"we\", \"us\") is a plumbing and facility services company based in Fort Lauderdale, Florida, serving Miami-Dade and Broward County. This policy explains how we handle personal information collected through this website."
+        ],
+        "items": [],
+        "after": [],
+        "links": []
+      },
+      {
+        "title": "Information we collect",
+        "paragraphs": [
+          "We only collect the information you choose to send us through our emergency, scheduling and quote forms:"
+        ],
+        "items": [
+          "Your name, phone number and, when requested, email address.",
+          "The service address and details about the job (type of service or emergency, preferred date and time, your message).",
+          "Your preferred language, so we can reply in English or Spanish."
+        ],
+        "after": [
+          "We do not use our own analytics or advertising cookies, and we do not build profiles of visitors."
+        ],
+        "links": []
+      },
+      {
+        "title": "How we use your information",
+        "items": [
+          "To respond to your request, dispatch a plumber, schedule a visit or prepare a quote.",
+          "To send you a confirmation of your request by email or text message.",
+          "To contact you about the job you requested."
+        ],
+        "after": [
+          "We do not sell, rent or trade your personal information."
+        ],
+        "paragraphs": [],
+        "links": []
+      },
+      {
+        "title": "Text messages (SMS)",
+        "paragraphs": [
+          "If you give us your phone number, we may send you text messages related to your request, such as a confirmation or scheduling updates. Message frequency varies and message and data rates may apply. Reply STOP to opt out at any time, or HELP for help.",
+          "No mobile information will be shared with third parties or affiliates for marketing or promotional purposes. Phone numbers and text messaging consent are only shared with the providers that deliver our messages."
+        ],
+        "items": [],
+        "after": [],
+        "links": []
+      },
+      {
+        "title": "Service providers",
+        "paragraphs": [
+          "We use trusted providers to run this website and deliver our communications. They only process your information to provide their service to us:"
+        ],
+        "items": [
+          "Resend — delivers our email notifications and confirmations.",
+          "Twilio — delivers our text messages.",
+          "Google reCAPTCHA — protects our forms from spam and abuse.",
+          "Google Maps — displays our service area map.",
+          "Our website hosting provider — serves this website."
+        ],
+        "after": [],
+        "links": []
+      },
+      {
+        "title": "Cookies and third-party services",
+        "paragraphs": [
+          "This website does not set its own tracking cookies. However, Google reCAPTCHA and the embedded Google Maps map may set cookies and collect information such as your IP address and browser data. Their use is governed by Google’s own policies.",
+          "This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply."
+        ],
+        "links": [
+          {
+            "label": "Google Privacy Policy",
+            "href": "https://policies.google.com/privacy"
+          },
+          {
+            "label": "Google Terms of Service",
+            "href": "https://policies.google.com/terms"
+          }
+        ],
+        "items": [],
+        "after": []
+      },
+      {
+        "title": "How long we keep your information",
+        "paragraphs": [
+          "We keep the information from your request only as long as needed to provide our services, keep business records and meet legal obligations."
+        ],
+        "items": [],
+        "after": [],
+        "links": []
+      },
+      {
+        "title": "Your choices",
+        "paragraphs": [
+          "You can ask us to access, correct or delete the personal information you sent us by contacting us at the phone number below. You can stop text messages at any time by replying STOP."
+        ],
+        "items": [],
+        "after": [],
+        "links": []
+      },
+      {
+        "title": "Children",
+        "paragraphs": [
+          "This website is not directed to children under 13, and we do not knowingly collect their personal information."
+        ],
+        "items": [],
+        "after": [],
+        "links": []
+      },
+      {
+        "title": "Changes to this policy",
+        "paragraphs": [
+          "We may update this policy from time to time. The date at the top of this page shows when it was last changed."
+        ],
+        "items": [],
+        "after": [],
+        "links": []
+      }
+    ],
+    "contactTitle": "Contact us",
+    "contactText": "For any question about this policy or your information, call us or write to us on WhatsApp:"
   }
 }

@@ -55,6 +55,7 @@ export default function Footer({ lang, dict }: Props) {
 
         <div className={styles.bottom}>
           <p>{dict.copyright}</p>
+          <Link className={styles.privacy} href={`/${lang}/privacy`}>{dict.privacy}</Link>
           <p>{dict.legal}</p>
         </div>
       </div>

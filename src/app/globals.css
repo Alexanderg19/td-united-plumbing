@@ -250,6 +250,27 @@ button { font-family: inherit; }
   width: 100%;
 }
 .field textarea { resize: vertical; min-height: 84px; }
+/* Phone input with country selector (react-phone-number-input) */
+.field .PhoneInput {
+  background: var(--paper-2);
+  border: 1.5px solid var(--line); border-radius: var(--radius);
+  padding: 0 14px;
+  transition: border-color .15s, background .15s, box-shadow .15s;
+}
+.field .PhoneInput:focus-within {
+  border-color: var(--blue); background: #fff;
+  box-shadow: 0 0 0 3px var(--blue-050);
+}
+.field .PhoneInput .PhoneInputInput {
+  border: 0; background: transparent; box-shadow: none;
+  padding: 13px 0 13px 6px;
+}
+.field .PhoneInput .PhoneInputCountry { margin-right: 4px; }
+.field .PhoneInput .PhoneInputCountryIcon { --PhoneInputCountryFlag-height: 1.05em; }
+.field .PhoneInput .PhoneInputCountrySelect:focus + .PhoneInputCountryIcon--border {
+  box-shadow: 0 0 0 1px var(--blue), inset 0 0 0 1px var(--blue);
+}
+.field .PhoneInput .PhoneInputCountrySelect:focus + .PhoneInputCountryIcon + .PhoneInputCountrySelectArrow { color: var(--blue); }
 .field input:focus,
 .field select:focus,
 .field textarea:focus {
@@ -273,6 +294,11 @@ button { font-family: inherit; }
 }
 .eform__actions .btn { white-space: nowrap; }
 .eform__note { font-size: 13px; color: var(--gray); }
+.eform__consent {
+  font-size: 12.5px; line-height: 1.5; color: var(--gray);
+  margin: 16px 0 0; max-width: 64ch;
+}
+.eform__consent a { color: var(--blue); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
 
 /* ---- Keyframes ---- */
 @keyframes pulse {

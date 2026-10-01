@@ -16,3 +16,16 @@ export function getLeadsEmailEnv() {
       .filter(Boolean),
   }
 }
+
+export function getLeadsSmsEnv() {
+  return {
+    TWILIO_ACCOUNT_SID: requireEnv('TWILIO_ACCOUNT_SID'),
+    TWILIO_AUTH_TOKEN: requireEnv('TWILIO_AUTH_TOKEN'),
+    SMS_FROM_NUMBER: requireEnv('SMS_FROM_NUMBER'),
+    INTERNAL_ALERT_PHONE_NUMBER: requireEnv('INTERNAL_ALERT_PHONE_NUMBER')
+      .split(',')
+      .map((phone) => phone.trim())
+      .filter(Boolean),
+    ENABLE_CUSTOMER_SMS_CONFIRMATION: process.env.ENABLE_CUSTOMER_SMS_CONFIRMATION === 'true',
+  }
+}

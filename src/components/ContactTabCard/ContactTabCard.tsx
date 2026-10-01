@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react'
 import type { ContactCardDict, Locale } from '@/app/[lang]/dictionaries'
+import { isValidPhone } from '@/lib/phone'
+import PhoneField from '@/components/PhoneField'
 import styles from './ContactTabCard.module.css'
 
 const PHONE_DISPLAY = '(954) 555-0199'
@@ -16,7 +18,6 @@ interface ScheduleFilled { name: boolean; phone: boolean; email: boolean; servic
 interface QuoteErrors { name: boolean; phone: boolean; email: boolean; message: boolean }
 interface QuoteFilled { name: boolean; phone: boolean; email: boolean; message: boolean }
 
-function validPhone(v: string) { return (v.match(/\d/g) || []).length >= 7 }
 function validEmail(v: string) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) }
 
 interface Props { dict: ContactCardDict; lang: Locale }
@@ -57,6 +58,7 @@ export default function ContactTabCard({ dict, lang }: Props) {
   const qNameRef = useRef<HTMLInputElement>(null)
   const qPhoneRef = useRef<HTMLInputElement>(null)
   const qEmailRef = useRef<HTMLInputElement>(null)
+  const qServiceRef = useRef<HTMLSelectElement>(null)
   const qMsgRef = useRef<HTMLTextAreaElement>(null)
   const tabcardRef = useRef<HTMLDivElement>(null)
   const scheduleWidgetId = useRef<number | null>(null)
@@ -140,7 +142,7 @@ export default function ContactTabCard({ dict, lang }: Props) {
     const token = window.grecaptcha?.getResponse(scheduleWidgetId.current ?? undefined) ?? ''
     const errs: ScheduleErrors = {
       name: !sNameRef.current?.value.trim(),
-      phone: !validPhone(sPhoneRef.current?.value ?? ''),
+      phone: !isValidPhone(sPhoneRef.current?.value ?? ''),
       email: !validEmail(sEmailRef.current?.value ?? ''),
       service: !sServiceRef.current?.value,
       address: !sAddressRef.current?.value.trim(),
@@ -205,7 +207,7 @@ export default function ContactTabCard({ dict, lang }: Props) {
     const token = window.grecaptcha?.getResponse(quoteWidgetId.current ?? undefined) ?? ''
     const errs: QuoteErrors = {
       name: !qNameRef.current?.value.trim(),
-      phone: !validPhone(qPhoneRef.current?.value ?? ''),
+      phone: !isValidPhone(qPhoneRef.current?.value ?? ''),
       email: !validEmail(qEmailRef.current?.value ?? ''),
       message: (qMsgRef.current?.value.trim().length ?? 0) < 4,
     }
@@ -232,6 +234,7 @@ export default function ContactTabCard({ dict, lang }: Props) {
           name: qNameRef.current?.value ?? '',
           phone: qPhoneRef.current?.value ?? '',
           email: qEmailRef.current?.value ?? '',
+          service: qServiceRef.current?.value || undefined,
           message: qMsgRef.current?.value ?? '',
         }),
       })
@@ -302,8 +305,8 @@ export default function ContactTabCard({ dict, lang }: Props) {
                 </div>
                 <div className={`field${scheduleErrors.phone ? ' has-error' : ''}`}>
                   <label htmlFor="s-phone">{s.labelPhone} <span className="req">*</span></label>
-                  <input type="tel" id="s-phone" name="phone" autoComplete="tel" placeholder={s.placeholderPhone}
-                    ref={sPhoneRef} onChange={(e) => { clearScheduleError('phone'); setScheduleFill('phone', e.target.value) }} />
+                  <PhoneField id="s-phone" lang={lang} inputRef={sPhoneRef}
+                    onChange={(value) => { clearScheduleError('phone'); setScheduleFill('phone', value) }} />
                   <span className="field__err" role="alert">{s.errPhone}</span>
                 </div>
                 <div className={`field${scheduleErrors.email ? ' has-error' : ''}`}>
@@ -366,6 +369,10 @@ export default function ContactTabCard({ dict, lang }: Props) {
                   <a href={`tel:${PHONE_TEL}`} style={{ color: 'var(--blue)', fontWeight: 600 }}>{PHONE_DISPLAY}</a>
                 </span>
               </div>
+              <p className="eform__consent">
+                {dict.consent}{' '}
+                <a href={`/${lang}/privacy`} target="_blank" rel="noopener">{dict.consentLink}</a>.
+              </p>
             </form>
           </div>
 
@@ -382,8 +389,8 @@ export default function ContactTabCard({ dict, lang }: Props) {
                 </div>
                 <div className={`field${quoteErrors.phone ? ' has-error' : ''}`}>
                   <label htmlFor="q-phone">{q.labelPhone} <span className="req">*</span></label>
-                  <input type="tel" id="q-phone" name="phone" autoComplete="tel" placeholder={q.placeholderPhone}
-                    ref={qPhoneRef} onChange={(e) => { clearQuoteError('phone'); setQuoteFill('phone', e.target.value) }} />
+                  <PhoneField id="q-phone" lang={lang} inputRef={qPhoneRef}
+                    onChange={(value) => { clearQuoteError('phone'); setQuoteFill('phone', value) }} />
                   <span className="field__err" role="alert">{q.errPhone}</span>
                 </div>
                 <div className={`field${quoteErrors.email ? ' has-error' : ''}`}>
@@ -394,7 +401,7 @@ export default function ContactTabCard({ dict, lang }: Props) {
                 </div>
                 <div className="field">
                   <label htmlFor="q-service">{q.labelService} <span style={{ color: 'var(--gray)' }}>{q.optional}</span></label>
-                  <select id="q-service" name="service" defaultValue="">
+                  <select id="q-service" name="service" defaultValue="" ref={qServiceRef}>
                     <option value="">{q.placeholderService}</option>
                     {dict.serviceOptions.map((opt) => <option key={opt}>{opt}</option>)}
                   </select>
@@ -426,6 +433,10 @@ export default function ContactTabCard({ dict, lang }: Props) {
                   <a href={WA_URL} target="_blank" rel="noopener" style={{ color: 'var(--blue)', fontWeight: 600 }}>WhatsApp</a>
                 </span>
               </div>
+              <p className="eform__consent">
+                {dict.consent}{' '}
+                <a href={`/${lang}/privacy`} target="_blank" rel="noopener">{dict.consentLink}</a>.
+              </p>
             </form>
           </div>
         </>

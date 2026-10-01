@@ -78,16 +78,19 @@
     "serviceAreaTitle": "Área de Servicio",
     "copyright": "© 2026 TD United Plumbing. Todos los derechos reservados.",
     "legal": "Miami-Dade y Broward · Licenciados y Asegurados",
+    "privacy": "Política de Privacidad",
     "cities": ["Golden Glades", "North Miami", "Miami Lakes", "Hialeah", "Doral", "Sweetwater", "Miami", "Miami Beach", "Fontainebleau", "Westchester"]
   },
   "form": {
     "title": "Solicitud de Emergencia",
     "labelName": "Nombre",
     "labelPhone": "Teléfono",
+    "labelEmail": "Correo electrónico",
+    "optional": "(opcional)",
     "labelType": "Tipo de Emergencia",
     "labelAddress": "Dirección",
     "placeholderName": "Su nombre",
-    "placeholderPhone": "(954) 000-0000",
+    "placeholderEmail": "usted@email.com",
     "placeholderType": "Seleccione una emergencia…",
     "placeholderAddress": "123 Calle Principal, Apt 4B, Miami, FL 33101",
     "options": [
@@ -100,13 +103,16 @@
       "Otro"
     ],
     "errName": "Por favor ingrese su nombre",
-    "errPhone": "Ingrese un número de teléfono válido",
+    "errPhone": "Ingrese un número válido para el país seleccionado",
+    "errEmail": "Ingrese un correo electrónico válido",
     "errType": "Por favor seleccione un tipo",
     "errAddress": "Por favor ingrese la dirección de la propiedad",
     "errRecaptcha": "Por favor confirme que no es un robot",
     "errSubmit": "Ocurrió un error al enviar su solicitud. Intente de nuevo o llámenos.",
     "btnSend": "Enviar Solicitud",
     "btnSending": "Enviando…",
+    "consent": "Al enviar, acepta que le contactemos por teléfono, mensaje de texto o correo sobre su solicitud. Su operador puede aplicar tarifas de mensajes y datos según su plan; responda STOP para cancelar. Consulte nuestra",
+    "consentLink": "Política de Privacidad",
     "btnCall": "O llame ahora",
     "successTitle": "Solicitud enviada con éxito",
     "successMsg": "Nos pondremos en contacto con usted en breve. Si prefiere hablar con nosotros ahora mismo, llámenos directamente:"
@@ -128,6 +134,8 @@
       "schedule": { "key": "01 — Reservar", "label": "Programar Visita" },
       "quote": { "key": "02 — Preguntar", "label": "Solicitar Cotización" }
     },
+    "consent": "Al enviar, acepta que le contactemos por teléfono, mensaje de texto o correo sobre su solicitud. Su operador puede aplicar tarifas de mensajes y datos según su plan; responda STOP para cancelar. Consulte nuestra",
+    "consentLink": "Política de Privacidad",
     "serviceOptions": [
       "Servicios para Tanques Sépticos",
       "Inspección con Cámara de Alcantarillado",
@@ -150,12 +158,11 @@
       "labelMsg": "Mensaje",
       "optional": "(opcional)",
       "placeholderName": "Su nombre",
-      "placeholderPhone": "(954) 000-0000",
       "placeholderEmail": "usted@email.com",
       "placeholderService": "Seleccione un servicio…",
       "placeholderMsg": "¿Algo que debamos saber antes de llegar?",
       "errName": "Por favor ingrese su nombre",
-      "errPhone": "Ingrese un número de teléfono válido",
+      "errPhone": "Ingrese un número válido para el país seleccionado",
       "errEmail": "Ingrese un correo electrónico válido",
       "errService": "Por favor seleccione un servicio",
       "labelAddress": "Dirección del Servicio",
@@ -180,12 +187,11 @@
       "labelMsg": "Mensaje",
       "optional": "(opcional)",
       "placeholderName": "Su nombre",
-      "placeholderPhone": "(954) 000-0000",
       "placeholderEmail": "usted@email.com",
       "placeholderService": "Seleccione un servicio…",
       "placeholderMsg": "Describa el problema, alcance o para qué desea una cotización…",
       "errName": "Por favor ingrese su nombre",
-      "errPhone": "Ingrese un número de teléfono válido",
+      "errPhone": "Ingrese un número válido para el país seleccionado",
       "errEmail": "Ingrese un correo electrónico válido",
       "errMsg": "Por favor cuéntenos un poco sobre el trabajo",
       "errRecaptcha": "Por favor confirme que no es un robot",
@@ -211,5 +217,137 @@
     ],
     "serviceAreaTitle": "Área de Servicio",
     "cities": ["Golden Glades", "North Miami", "Miami Lakes", "Hialeah", "Doral", "Sweetwater", "Miami", "Miami Beach", "Fontainebleau", "Westchester"]
+  },
+  "privacy": {
+    "hero": {
+      "eyebrow": "Legal · Privacidad",
+      "title": "Política de",
+      "titleEm": "Privacidad.",
+      "sub": "Cómo TD United Plumbing recopila, usa y protege la información que nos comparte a través de este sitio web.",
+      "callLabel": "¿Preguntas? Llámenos"
+    },
+    "updatedLabel": "Última actualización",
+    "updated": "30 de septiembre de 2026",
+    "sections": [
+      {
+        "title": "Quiénes somos",
+        "paragraphs": [
+          "TD United Plumbing (\"nosotros\") es una empresa de plomería y servicios para instalaciones con sede en Fort Lauderdale, Florida, que atiende Miami-Dade y el Condado de Broward. Esta política explica cómo manejamos la información personal recopilada a través de este sitio web."
+        ],
+        "items": [],
+        "after": [],
+        "links": []
+      },
+      {
+        "title": "Información que recopilamos",
+        "paragraphs": [
+          "Solo recopilamos la información que usted decide enviarnos a través de nuestros formularios de emergencia, programación y cotización:"
+        ],
+        "items": [
+          "Su nombre, número de teléfono y, cuando se solicita, correo electrónico.",
+          "La dirección del servicio y los detalles del trabajo (tipo de servicio o emergencia, fecha y hora preferidas, su mensaje).",
+          "Su idioma preferido, para responderle en inglés o español."
+        ],
+        "after": [
+          "No usamos cookies propias de analítica ni de publicidad, y no creamos perfiles de los visitantes."
+        ],
+        "links": []
+      },
+      {
+        "title": "Cómo usamos su información",
+        "items": [
+          "Para responder a su solicitud, enviar un plomero, programar una visita o preparar una cotización.",
+          "Para enviarle una confirmación de su solicitud por correo electrónico o mensaje de texto.",
+          "Para contactarle sobre el trabajo que solicitó."
+        ],
+        "after": [
+          "No vendemos, alquilamos ni intercambiamos su información personal."
+        ],
+        "paragraphs": [],
+        "links": []
+      },
+      {
+        "title": "Mensajes de texto (SMS)",
+        "paragraphs": [
+          "Si nos da su número de teléfono, podemos enviarle mensajes de texto relacionados con su solicitud, como una confirmación o actualizaciones de la cita. La frecuencia de los mensajes varía y pueden aplicarse tarifas de mensajes y datos. Responda STOP para dejar de recibirlos en cualquier momento, o HELP para obtener ayuda.",
+          "No compartiremos información móvil con terceros ni afiliados con fines de marketing o promocionales. Los números de teléfono y el consentimiento para mensajes de texto solo se comparten con los proveedores que entregan nuestros mensajes."
+        ],
+        "items": [],
+        "after": [],
+        "links": []
+      },
+      {
+        "title": "Proveedores de servicios",
+        "paragraphs": [
+          "Usamos proveedores de confianza para operar este sitio web y entregar nuestras comunicaciones. Solo procesan su información para prestarnos su servicio:"
+        ],
+        "items": [
+          "Resend — entrega nuestras notificaciones y confirmaciones por correo electrónico.",
+          "Twilio — entrega nuestros mensajes de texto.",
+          "Google reCAPTCHA — protege nuestros formularios contra spam y abuso.",
+          "Google Maps — muestra el mapa de nuestra área de cobertura.",
+          "Nuestro proveedor de hosting — sirve este sitio web."
+        ],
+        "after": [],
+        "links": []
+      },
+      {
+        "title": "Cookies y servicios de terceros",
+        "paragraphs": [
+          "Este sitio web no instala cookies de seguimiento propias. Sin embargo, Google reCAPTCHA y el mapa de Google Maps integrado pueden instalar cookies y recopilar información como su dirección IP y datos del navegador. Su uso se rige por las políticas de Google.",
+          "Este sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos de Servicio de Google."
+        ],
+        "links": [
+          {
+            "label": "Política de Privacidad de Google",
+            "href": "https://policies.google.com/privacy"
+          },
+          {
+            "label": "Términos de Servicio de Google",
+            "href": "https://policies.google.com/terms"
+          }
+        ],
+        "items": [],
+        "after": []
+      },
+      {
+        "title": "Cuánto tiempo conservamos su información",
+        "paragraphs": [
+          "Conservamos la información de su solicitud solo el tiempo necesario para prestar nuestros servicios, mantener registros comerciales y cumplir obligaciones legales."
+        ],
+        "items": [],
+        "after": [],
+        "links": []
+      },
+      {
+        "title": "Sus opciones",
+        "paragraphs": [
+          "Puede pedirnos acceder, corregir o eliminar la información personal que nos envió contactándonos al teléfono indicado abajo. Puede dejar de recibir mensajes de texto en cualquier momento respondiendo STOP."
+        ],
+        "items": [],
+        "after": [],
+        "links": []
+      },
+      {
+        "title": "Menores de edad",
+        "paragraphs": [
+          "Este sitio web no está dirigido a menores de 13 años y no recopilamos conscientemente su información personal."
+        ],
+        "items": [],
+        "after": [],
+        "links": []
+      },
+      {
+        "title": "Cambios a esta política",
+        "paragraphs": [
+          "Podemos actualizar esta política ocasionalmente. La fecha al inicio de esta página indica cuándo se modificó por última vez."
+        ],
+        "items": [],
+        "after": [],
+        "links": []
+      }
+    ],
+    "contactTitle": "Contáctenos",
+    "contactText": "Para cualquier pregunta sobre esta política o su información, llámenos o escríbanos por WhatsApp:"
   }
 }

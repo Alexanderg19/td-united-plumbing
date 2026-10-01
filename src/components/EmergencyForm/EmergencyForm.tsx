@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react'
 import type { FormDict, Locale } from '@/app/[lang]/dictionaries'
+import { isValidPhone } from '@/lib/phone'
+import PhoneField from '@/components/PhoneField'
 import styles from './EmergencyForm.module.css'
 
 declare global {
@@ -29,23 +31,27 @@ interface EmergencyFormProps {
   lang: Locale
 }
 
-interface FieldErrors { name: boolean; phone: boolean; type: boolean; address: boolean }
+interface FieldErrors { name: boolean; phone: boolean; email: boolean; type: boolean; address: boolean }
 interface FieldFilled { name: boolean; phone: boolean; type: boolean; address: boolean }
 
-function validPhone(v: string) { return (v.match(/\d/g) || []).length >= 7 }
+const EMPTY_ERRORS: FieldErrors = { name: false, phone: false, email: false, type: false, address: false }
+const EMPTY_FILLED: FieldFilled = { name: false, phone: false, type: false, address: false }
+
+function validEmail(v: string) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) }
 
 export default function EmergencyForm({ isOpen, onClose, dict, lang }: EmergencyFormProps) {
   const [isSuccess, setIsSuccess] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [showRecapErr, setShowRecapErr] = useState(false)
   const [showSubmitErr, setShowSubmitErr] = useState(false)
-  const [errors, setErrors] = useState<FieldErrors>({ name: false, phone: false, type: false, address: false })
-  const [filled, setFilled] = useState<FieldFilled>({ name: false, phone: false, type: false, address: false })
+  const [errors, setErrors] = useState<FieldErrors>(EMPTY_ERRORS)
+  const [filled, setFilled] = useState<FieldFilled>(EMPTY_FILLED)
   const [recaptchaCompleted, setRecaptchaCompleted] = useState(false)
 
   const formRef = useRef<HTMLDivElement>(null)
   const nameInputRef = useRef<HTMLInputElement>(null)
   const phoneInputRef = useRef<HTMLInputElement>(null)
+  const emailInputRef = useRef<HTMLInputElement>(null)
   const typeInputRef = useRef<HTMLSelectElement>(null)
   const addressInputRef = useRef<HTMLInputElement>(null)
   const recaptchaWidgetId = useRef<number | null>(null)
@@ -91,19 +97,22 @@ export default function EmergencyForm({ isOpen, onClose, dict, lang }: Emergency
     e.preventDefault()
     const name = nameInputRef.current?.value ?? ''
     const phone = phoneInputRef.current?.value ?? ''
+    const email = emailInputRef.current?.value ?? ''
     const type = typeInputRef.current?.value ?? ''
     const address = addressInputRef.current?.value ?? ''
 
     const nameErr = !name.trim()
-    const phoneErr = !validPhone(phone)
+    const phoneErr = !isValidPhone(phone)
+    const emailErr = email.trim() !== '' && !validEmail(email)
     const typeErr = !type
     const addressErr = !address.trim()
-    setErrors({ name: nameErr, phone: phoneErr, type: typeErr, address: addressErr })
+    setErrors({ name: nameErr, phone: phoneErr, email: emailErr, type: typeErr, address: addressErr })
 
     const token = window.grecaptcha?.getResponse(recaptchaWidgetId.current ?? undefined) ?? ''
-    if (nameErr || phoneErr || typeErr || addressErr || !token) {
+    if (nameErr || phoneErr || emailErr || typeErr || addressErr || !token) {
       if (nameErr) nameInputRef.current?.focus()
       else if (phoneErr) phoneInputRef.current?.focus()
+      else if (emailErr) emailInputRef.current?.focus()
       else if (typeErr) typeInputRef.current?.focus()
       else if (addressErr) addressInputRef.current?.focus()
       return
@@ -116,7 +125,7 @@ export default function EmergencyForm({ isOpen, onClose, dict, lang }: Emergency
       const res = await fetch('/api/leads', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ type: 'emergency', token, lang, name, phone, emergencyType: type, address }),
+        body: JSON.stringify({ type: 'emergency', token, lang, name, phone, email: email.trim() || undefined, emergencyType: type, address }),
       })
       const { success, error } = await res.json()
       if (!success) {
@@ -147,8 +156,8 @@ export default function EmergencyForm({ isOpen, onClose, dict, lang }: Emergency
     if (isSuccess) recaptchaWidgetId.current = null
     setIsSuccess(false)
     setRecaptchaCompleted(false)
-    setFilled({ name: false, phone: false, type: false, address: false })
-    setErrors({ name: false, phone: false, type: false, address: false })
+    setFilled(EMPTY_FILLED)
+    setErrors(EMPTY_ERRORS)
     setShowRecapErr(false)
     setShowSubmitErr(false)
     onClose()
@@ -186,10 +195,17 @@ export default function EmergencyForm({ isOpen, onClose, dict, lang }: Emergency
 
               <div className={`field${errors.phone ? ' has-error' : ''}`}>
                 <label htmlFor="ef-phone">{dict.labelPhone} <span className="req">*</span></label>
-                <input type="tel" id="ef-phone" name="phone" autoComplete="tel"
-                  placeholder={dict.placeholderPhone} ref={phoneInputRef}
-                  onChange={(e) => { clearError('phone'); setFill('phone', e.target.value) }} />
+                <PhoneField id="ef-phone" lang={lang} inputRef={phoneInputRef}
+                  onChange={(value) => { clearError('phone'); setFill('phone', value) }} />
                 <span className="field__err" role="alert">{dict.errPhone}</span>
+              </div>
+
+              <div className={`field${errors.email ? ' has-error' : ''}`}>
+                <label htmlFor="ef-email">{dict.labelEmail} <span style={{ color: 'var(--gray)' }}>{dict.optional}</span></label>
+                <input type="email" id="ef-email" name="email" autoComplete="email"
+                  placeholder={dict.placeholderEmail} ref={emailInputRef}
+                  onChange={() => clearError('email')} />
+                <span className="field__err" role="alert">{dict.errEmail}</span>
               </div>
 
               <div className={`field${errors.type ? ' has-error' : ''}`}>
@@ -203,7 +219,7 @@ export default function EmergencyForm({ isOpen, onClose, dict, lang }: Emergency
                 <span className="field__err" role="alert">{dict.errType}</span>
               </div>
 
-              <div className={`field${errors.address ? ' has-error' : ''}`}>
+              <div className={`field field--full${errors.address ? ' has-error' : ''}`}>
                 <label htmlFor="ef-address">{dict.labelAddress} <span className="req">*</span></label>
                 <input type="text" id="ef-address" name="address" autoComplete="street-address"
                   placeholder={dict.placeholderAddress} ref={addressInputRef}
@@ -239,6 +255,10 @@ export default function EmergencyForm({ isOpen, onClose, dict, lang }: Emergency
                 </span>
               </button>
             </div>
+            <p className="eform__consent">
+              {dict.consent}{' '}
+              <a href={`/${lang}/privacy`} target="_blank" rel="noopener">{dict.consentLink}</a>.
+            </p>
           </form>
         </div>
       )}

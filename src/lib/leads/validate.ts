@@ -1,10 +1,9 @@
 import { z } from 'zod'
 import { locales, type Locale } from '@/app/[lang]/dictionaries'
+import { formatPhone, isValidPhone } from '@/lib/phone'
 
 const langSchema = z.enum(locales as [Locale, ...Locale[]])
-const phoneSchema = z.string().refine((v) => (v.match(/\d/g) || []).length >= 7, {
-  message: 'Invalid phone number',
-})
+const phoneSchema = z.string().refine(isValidPhone, { message: 'Invalid phone number' }).transform(formatPhone)
 const nonEmpty = z.string().trim().min(1)
 const emailSchema = z.email().trim()
 
@@ -14,6 +13,7 @@ const emergencyLeadSchema = z.object({
   lang: langSchema,
   name: nonEmpty,
   phone: phoneSchema,
+  email: emailSchema.optional(),
   emergencyType: nonEmpty,
   address: nonEmpty,
 })

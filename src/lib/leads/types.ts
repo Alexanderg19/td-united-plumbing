@@ -9,6 +9,7 @@ export interface EmergencyLead extends LeadBase {
   type: 'emergency'
   name: string
   phone: string
+  email?: string
   emergencyType: string
   address: string
 }

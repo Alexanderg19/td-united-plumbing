@@ -1,6 +1,7 @@
 import { validateLead } from '@/lib/leads/validate'
 import { verifyRecaptcha } from '@/lib/recaptcha'
 import { sendInternalEmail, sendConfirmationEmail } from '@/lib/leads/notify-email'
+import { sendInternalSms, sendConfirmationSms } from '@/lib/leads/notify-sms'
 
 export async function POST(request: Request) {
   const payload = await request.json()
@@ -17,7 +18,12 @@ export async function POST(request: Request) {
     return Response.json({ success: false, error: 'recaptcha' }, { status: 400 })
   }
 
-  const results = await Promise.allSettled([sendInternalEmail(lead), sendConfirmationEmail(lead)])
+  const results = await Promise.allSettled([
+    sendInternalEmail(lead),
+    sendConfirmationEmail(lead),
+    sendInternalSms(lead),
+    sendConfirmationSms(lead),
+  ])
 
   for (const result of results) {
     if (result.status === 'rejected') {

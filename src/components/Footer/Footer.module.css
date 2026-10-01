@@ -61,6 +61,14 @@
   font-size: 11px; letter-spacing: 0.08em;
   color: rgba(255,255,255,0.4);
 }
+.bottom .privacy {
+  font-family: var(--font-mono);
+  font-size: 11px; letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.6);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.bottom .privacy:hover { color: #fff; }
 
 @media (max-width: 1080px) {
   .grid { grid-template-columns: 1fr 1fr; gap: 34px; }

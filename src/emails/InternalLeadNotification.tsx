@@ -17,6 +17,7 @@ function leadToRows(lead: Lead): LeadDetailRow[] {
   const base: LeadDetailRow[] = [
     { label: 'Name', value: lead.name },
     { label: 'Phone', value: lead.phone },
+    ...(lead.email ? [{ label: 'Email', value: lead.email }] : []),
   ]
 
   switch (lead.type) {
@@ -29,7 +30,6 @@ function leadToRows(lead: Lead): LeadDetailRow[] {
     case 'schedule':
       return [
         ...base,
-        { label: 'Email', value: lead.email },
         { label: 'Service', value: lead.service },
         { label: 'Address', value: lead.address },
         { label: 'Date', value: lead.date },
@@ -39,7 +39,6 @@ function leadToRows(lead: Lead): LeadDetailRow[] {
     case 'quote':
       return [
         ...base,
-        { label: 'Email', value: lead.email },
         ...(lead.service ? [{ label: 'Service', value: lead.service }] : []),
         { label: 'Message', value: lead.message },
       ]
